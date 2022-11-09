@@ -5,15 +5,29 @@ import java.util.Scanner;
 public class LoanCalculator {
 
     /**
-     * TODO: finish out this JavaDoc comment block.
-     * FIXME: WHAT DOES THIS METHOD DO?
+     * Get the remaining money to pay after 3 months from the starting amount
      * 
-     * @param ???
-     * @return ???
+     * @param amount the total amount of money due
+     * @return the amount of money due to pay after 3 months
      */
     static int getRemainingAmountIn3Months(int amount) {
-        // TODO: Rewrite this method
-        return -1;
+        int remainingAmount = amount;
+
+        for (int i = 0; i < 3; i++) {
+            remainingAmount = removeTenPercent(remainingAmount)[1];
+        }
+
+        return remainingAmount;
+    }
+
+    public static int[] removeTenPercent(double amount) {
+        int duePayment = (int)(amount * 10 / 100);
+        int remainingPayment = (int)(amount - duePayment);
+
+        return new int[] {
+                duePayment,
+                remainingPayment
+        };
     }
 
     public static void main(String[] args) {
