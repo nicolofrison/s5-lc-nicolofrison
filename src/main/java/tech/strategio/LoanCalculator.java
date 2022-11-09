@@ -14,20 +14,17 @@ public class LoanCalculator {
         int remainingAmount = amount;
 
         for (int i = 0; i < 3; i++) {
-            remainingAmount = removeTenPercent(remainingAmount)[1];
+            remainingAmount = removeTenPercent(remainingAmount);
         }
 
         return remainingAmount;
     }
 
-    public static int[] removeTenPercent(double amount) {
+    public static int removeTenPercent(double amount) {
         int duePayment = (int)(amount * 10 / 100);
         int remainingPayment = (int)(amount - duePayment);
 
-        return new int[] {
-                duePayment,
-                remainingPayment
-        };
+        return remainingPayment;
     }
 
     public static void main(String[] args) {
